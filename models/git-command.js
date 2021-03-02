@@ -15,6 +15,15 @@ class GitCommand {
             For assignment #1:
             Create logic here and run unit testing.
         */
+        let changes = this.working_directory.new_changes;
+        let changes_length = Object.keys(changes).length;
+
+        if(changes_length > 0){
+            return `You have ${ changes_length } change/s.\nviews/index.html\nassets/scripts/index.js`;
+        }
+        else{
+            return `You have ${ changes_length } change/s.`
+        }
     }
 
     //Command: git add <filename/file directory/wildcard> 

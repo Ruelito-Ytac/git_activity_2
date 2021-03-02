@@ -15,7 +15,7 @@ describe("Testing GitCommand.status()", function(){
         let git = new GitCommand(wd);
         let output = git.status();
 
-        expect(output).to.equal(undefined);
+        expect(output).to.equal('You have 2 change/s.\nviews/index.html\nassets/scripts/index.js');
     });
 
     it('Should return information if no changes in directory', function(){
@@ -23,7 +23,7 @@ describe("Testing GitCommand.status()", function(){
         let git = new GitCommand(wd);
         let output = git.status();
 
-        expect(output).to.equal(undefined);
+        expect(output).to.equal('You have 0 change/s.');
     });
 })
 
@@ -55,7 +55,6 @@ describe("Testing GitCommand.add()", function(){
         expect(output).to.equal(`Failed to add ${path_file}! File is not modified or missing.`);
     });
 
-
     it('Should success with path_file "."', function(){
         let wd = new WorkingDirectory();
         wd.addFile("index.html", "views", "<html>Hello</html>");
@@ -68,7 +67,7 @@ describe("Testing GitCommand.add()", function(){
         let output_status = git.status();
 
         expect(output_add).to.equal('Failed to add .! File is not modified or missing.');
-        expect(output_status).to.equal(undefined);
+        expect(output_status).to.equal('You have 2 change/s.\nviews/index.html\nassets/scripts/index.js');
     });
 
     it('Should success with path_file "*"', function(){
@@ -83,6 +82,6 @@ describe("Testing GitCommand.add()", function(){
         let output_status = git.status();
 
         expect(output_add).to.equal('Failed to add *! File is not modified or missing.');
-        expect(output_status).to.equal(undefined);
+        expect(output_status).to.equal('You have 2 change/s.\nviews/index.html\nassets/scripts/index.js');
     });
 })
